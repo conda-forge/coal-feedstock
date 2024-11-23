@@ -12,7 +12,7 @@ source:
   sha256: 6a9cbd4684e907fd16577e5227fbace06ac15ca861c0846dfe5bc81e565fb1e7
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: {{ cppname }}
