@@ -4,7 +4,7 @@ rm -rf build
 mkdir build
 cd build
 
-Python3_NumPy_INCLUDE_DIR="$($PYTHON -c 'import numpy;print(numpy.get_include())')"
+Python3_NumPy_INCLUDE_DIR="$(python -c 'import numpy;print(numpy.get_include())')"
 export GENERATE_PYTHON_STUBS=1
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
   export GENERATE_PYTHON_STUBS=0
