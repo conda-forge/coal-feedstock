@@ -74,10 +74,10 @@ outputs:
         - python
         - libboost-python-devel
         - eigenpy
-        - numpy
         - {{ pin_subpackage(cppname, exact=true) }}
       run:
         - python
+        - numpy
         - {{ pin_subpackage(cppname, exact=true) }}
     test:
       imports:
