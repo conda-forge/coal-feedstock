@@ -20,8 +20,6 @@ libboost_devel:
 - '1.86'
 libboost_python_devel:
 - '1.86'
-numpy:
-- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -32,6 +30,3 @@ qhull:
 - '2020.2'
 target_platform:
 - linux-aarch64
-zip_keys:
-- - python
-  - numpy

@@ -22,8 +22,6 @@ libboost_python_devel:
 - '1.86'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-numpy:
-- '2.0'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -34,6 +32,3 @@ qhull:
 - '2020.2'
 target_platform:
 - osx-64
-zip_keys:
-- - python
-  - numpy
