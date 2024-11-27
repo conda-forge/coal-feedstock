@@ -12,7 +12,7 @@ source:
   sha256: 6a9cbd4684e907fd16577e5227fbace06ac15ca861c0846dfe5bc81e565fb1e7
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - name: {{ cppname }}
@@ -74,6 +74,7 @@ outputs:
         - python
         - libboost-python-devel
         - eigenpy
+        - numpy
         - {{ pin_subpackage(cppname, exact=true) }}
       run:
         - python
