@@ -1,7 +1,7 @@
 {% set name = "coal" %}
 {% set cppname = "lib" + name %}
 {% set pythonname = name + "-python" %}
-{% set version = "3.0.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name|lower }}-split
@@ -9,17 +9,17 @@ package:
 
 source:
   url: https://github.com/coal-library/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6a9cbd4684e907fd16577e5227fbace06ac15ca861c0846dfe5bc81e565fb1e7
+  sha256: b9609301baefbbf45b4e0f80865abc2b2dcbb69c323a55b0cd95f141959c478c
 
 build:
-  number: 5
+  number: 0
 
 outputs:
   - name: {{ cppname }}
     build:
       run_exports:
         - {{ pin_subpackage(cppname, max_pin='x.x.x') }}
-    script: build_cppcoal.sh   # [not win]
+    script: build_cppcoal.sh  # [not win]
     script: build_cppcoal.bat  # [win]
     requirements:
       build:
@@ -49,7 +49,7 @@ outputs:
         - test -f $PREFIX/lib/lib{{ name }}${SHLIB_EXT}  # [unix]
 
   - name: {{ pythonname }}
-    script: build_coal_python.sh   # [not win]
+    script: build_coal_python.sh  # [not win]
     script: build_coal_python.bat  # [win]
     requirements:
       build:
