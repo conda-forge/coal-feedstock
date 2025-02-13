@@ -94,6 +94,9 @@ outputs:
         - coal
   - name: {{ name }}
     requirements:
+      host:
+        # Explicitely add a python requirement so that the hash changes between python version
+        - python
       run:
         - {{ pin_subpackage(cppname, exact=true) }}
         - {{ pin_subpackage(pythonname, exact=true) }}
