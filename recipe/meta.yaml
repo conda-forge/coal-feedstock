@@ -93,8 +93,6 @@ outputs:
       imports:
         - coal
   - name: {{ name }}
-    build:
-      noarch: generic
     requirements:
       run:
         - {{ pin_subpackage(cppname, exact=true) }}
