@@ -8,11 +8,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/coal-library/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b9609301baefbbf45b4e0f80865abc2b2dcbb69c323a55b0cd95f141959c478c
+  git_url: https://github.com/nim65s/coal
+  git_rev: only-py
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - name: {{ cppname }}
