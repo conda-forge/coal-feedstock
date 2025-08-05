@@ -8,8 +8,8 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/nim65s/coal
-  git_rev: only-py
+  git_url: https://github.com/coal-library/coal
+  git_rev: devel
 
 build:
   number: 4
