@@ -8,8 +8,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/coal-library/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b9609301baefbbf45b4e0f80865abc2b2dcbb69c323a55b0cd95f141959c478c
+  git_url: https://github.com/coal-library/coal
+  git_rev: devel
 
 build:
   number: 4
@@ -93,6 +93,9 @@ outputs:
       imports:
         - coal
   - name: {{ name }}
+    build:
+      run_exports:
+        - {{ pin_subpackage(cppname, max_pin='x.x.x') }}
     requirements:
       host:
         # Explicitely add a python requirement so that the hash changes between python version
