@@ -32,6 +32,7 @@ outputs:
         - doxygen <1.9.8|>=1.11,<1.13
       host:
         - eigen
+        - eigen-abi-devel
         - assimp
         - octomap
         - libboost-devel
@@ -68,6 +69,7 @@ outputs:
         - lxml  # [not win]
       host:
         - eigen
+        - eigen-abi-devel
         - assimp
         - octomap
         - libboost-devel
