@@ -1,5 +1,5 @@
 assimp:
-- 6.0.3
+- '6'
 c_stdlib:
 - sysroot
 c_stdlib_version:
@@ -17,9 +17,9 @@ docker_image:
 eigen_abi_devel:
 - 5.0.1
 libboost_devel:
-- '1.88'
+- '1.90'
 libboost_python_devel:
-- '1.88'
+- '1.90'
 numpy:
 - '2'
 pin_run_as_build:

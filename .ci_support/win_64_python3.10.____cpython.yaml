@@ -1,5 +1,5 @@
 assimp:
-- 6.0.3
+- '6'
 c_stdlib:
 - vs
 channel_sources:
@@ -11,9 +11,9 @@ cxx_compiler:
 eigen_abi_devel:
 - 5.0.1
 libboost_devel:
-- '1.88'
+- '1.90'
 libboost_python_devel:
-- '1.88'
+- '1.90'
 pin_run_as_build:
   python:
     min_pin: x.x
