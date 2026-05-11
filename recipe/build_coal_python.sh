@@ -22,9 +22,11 @@ else
   export Python3_NumPy_INCLUDE_DIR=$BUILD_NUMPY_INCLUDE_DIRS
 fi
 
+# CMAKE_CXX_STANDARD hard coding should be removed in JRLv2
 cmake ${CMAKE_ARGS} .. \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_CXX_STANDARD=17 \
       -DPYTHON_EXECUTABLE=$PYTHON \
       -DPython3_NumPy_INCLUDE_DIR=$Python3_NumPy_INCLUDE_DIR \
       -DGENERATE_PYTHON_STUBS=$GENERATE_PYTHON_STUBS \

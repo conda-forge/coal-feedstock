@@ -6,9 +6,11 @@ cd build
 set "CC=clang-cl.exe"
 set "CXX=clang-cl.exe"
 
+:: CMAKE_CXX_STANDARD hard coding should be removed in JRLv2
 cmake %SRC_DIR% ^
     -GNinja ^
     -DCMAKE_BUILD_TYPE=Release ^
+    -DCMAKE_CXX_STANDARD=17 ^
     -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
     -DPYTHON_SITELIB=%SP_DIR% ^
     -DPYTHON_EXECUTABLE=%PYTHON% ^
