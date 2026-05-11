@@ -10,6 +10,9 @@ package:
 source:
   url: https://github.com/coal-library/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 899eb343ee7d86ae6312401bc969d1d2cb8103a5a67af5e1f06061a9c5fb0743
+  patches:
+    # Force CXX17 as minimal version
+    - patches/0001-Use-CXX17-as-default-C-standard.patch
 
 build:
   number: 2

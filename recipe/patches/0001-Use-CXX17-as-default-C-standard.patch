@@ -1,0 +1,25 @@
+From 8812758809746dd8b1696f9e469395d09256fa09 Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Mon, 11 May 2026 16:22:59 +0200
+Subject: [PATCH] Use CXX17 as default C++ standard
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 61bb7ced..8f527400 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -172,7 +172,7 @@ if(Boost_VERSION_STRING VERSION_LESS 1.81)
+   CHECK_MINIMAL_CXX_STANDARD(11 ENFORCE)
+ else()
+   # Boost.Math will be C++14 starting in July 2023 (Boost 1.82 release)
+-  CHECK_MINIMAL_CXX_STANDARD(14 ENFORCE)
++  CHECK_MINIMAL_CXX_STANDARD(17 ENFORCE)
+ endif()
+ 
+ # Optional dependencies
+-- 
+2.52.0
+
