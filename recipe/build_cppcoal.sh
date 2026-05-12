@@ -3,9 +3,11 @@
 mkdir build
 cd build
 
+# CMAKE_CXX_STANDARD hard coding should be removed in JRLv2
 cmake ${CMAKE_ARGS} .. \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_CXX_STANDARD=17 \
       -DBUILD_PYTHON_INTERFACE=OFF \
       -DCOAL_HAS_QHULL=ON \
       -DBUILD_TESTING=OFF
