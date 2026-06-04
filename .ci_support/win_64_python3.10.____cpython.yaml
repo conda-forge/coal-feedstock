@@ -3,7 +3,7 @@ assimp:
 c_stdlib:
 - vs
 channel_sources:
-- ./feedstock_root/jrl-cmakemodules_artifacts,./feedstock_root/eigenpy_artifacts,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
