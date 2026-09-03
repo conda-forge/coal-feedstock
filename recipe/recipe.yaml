@@ -1,0 +1,166 @@
+schema_version: 1
+
+context:
+  name: coal
+  cppname: libcoal
+  pythonname: coal-python
+  version: 3.0.4
+
+recipe:
+  name: ${{ name|lower }}-split
+  version: ${{ version }}
+
+source:
+  url: https://github.com/coal-library/${{ name }}/releases/download/v${{ version }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 0a9091aa281f51b9513f11aae39758a6188bca63010524f36b3bdc566381ca4a
+
+build:
+  number: 1
+
+outputs:
+  - package:
+      name: ${{ cppname }}
+    build:
+      script:
+        - if: win
+          then: build_cppcoal.bat
+          else: build_cppcoal.sh
+    requirements:
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib("c") }}
+        - cmake
+        - ninja
+        # XML generation seem to be broken in some doxygen version
+        - doxygen <1.9.8|>=1.11,<1.13
+      host:
+        - eigen
+        - eigen-abi-devel
+        - assimp
+        - octomap
+        - libboost-devel
+        - qhull
+        - if: not win
+          then: qhull-static
+      run:
+        - eigen
+        - libboost-devel
+        # Since qhullcpp is leaking in header file
+        # consumer will need it to build against coal
+        - if: not win
+          then: qhull-static
+      run_exports:
+        - ${{ pin_subpackage(cppname, upper_bound='x.x.x') }}
+    tests:
+      - package_contents:
+          include:
+            - coal/fwd.hh
+            - coal/config.hh
+          lib:
+            - coal
+      - script:
+          - cmake-package-check coal --target coal::coal
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+      - script: 
+          - pkg-config --modversion ${{ name }}
+        requirements:
+          run:
+            - pkg-config
+  - package:
+      name: ${{ pythonname }}
+    build:
+      script:
+        - if: win
+          then: build_coal_python.bat
+          else: build_coal_python.sh
+    requirements:
+      build:
+        - if: build_platform != target_platform
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - numpy
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib("c") }}
+        - cmake
+        - ninja
+        # XML generation seem to be broken in some doxygen version
+        - doxygen <1.9.8|>=1.11,<1.13
+        - if: not win
+          then:
+            - pylatexenc
+            - lxml
+      host:
+        - eigen
+        - eigen-abi-devel
+        - assimp
+        - octomap
+        - libboost-devel
+        - qhull
+        - if: not win
+          then: qhull-static
+        - python
+        - libboost-python-devel
+        - eigenpy
+        # On Windows, Numpy 2.0 don't allow to export the PY_ARRAY_UNIQUE_SYMBOL.
+        # This has been fixed in Numpy 2.1.
+        - if: win
+          then: numpy >=2.1
+          else: numpy
+        - ${{ pin_subpackage(cppname, exact=true) }}
+      run:
+        - python
+        - if: not win
+          then: numpy
+        - ${{ pin_subpackage(cppname, exact=true) }}
+    tests:
+      - python:
+          imports:
+            - coal
+  - package:
+      name: ${{ name }}
+    requirements:
+      host:
+        # Explicitely add a python requirement so that the hash changes between python version
+        - python
+      run:
+        - ${{ pin_subpackage(cppname, exact=true) }}
+        - ${{ pin_subpackage(pythonname, exact=true) }}
+      run_exports:
+        - ${{ pin_subpackage(cppname, exact=true) }}
+    tests:
+      - python:
+          imports:
+            - coal
+      - script:
+          - cmake-package-check coal --target coal::coal
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+      - script: 
+          - pkg-config --modversion ${{ name }}
+        requirements:
+          run:
+            - pkg-config
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: An extension of the Flexible Collision Library
+  homepage: https://github.com/coal-library/coal
+  repository: https://github.com/coal-library/coal
+
+extra:
+  feedstock-name: coal
+  recipe-maintainers:
+    - jorisv
+    - jcarpent
+    - ymontmarin
+    - lmontaut
+
