@@ -3,9 +3,6 @@ rm -rf build
 mkdir build
 cd build
 
-set "CC=clang-cl.exe"
-set "CXX=clang-cl.exe"
-
 :: CMAKE_CXX_STANDARD hard coding should be removed in JRLv2
 cmake %SRC_DIR% ^
     -GNinja ^
