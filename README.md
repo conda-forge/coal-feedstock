@@ -57,6 +57,9 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-coal-green.svg)](https://anaconda.org/conda-forge/coal) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/coal.svg)](https://anaconda.org/conda-forge/coal) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/coal.svg)](https://anaconda.org/conda-forge/coal) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/coal.svg)](https://anaconda.org/conda-forge/coal) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-coal--python-green.svg)](https://anaconda.org/conda-forge/coal-python) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/coal-python.svg)](https://anaconda.org/conda-forge/coal-python) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/coal-python.svg)](https://anaconda.org/conda-forge/coal-python) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/coal-python.svg)](https://anaconda.org/conda-forge/coal-python) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-coal--python--bp-green.svg)](https://anaconda.org/conda-forge/coal-python-bp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/coal-python-bp.svg)](https://anaconda.org/conda-forge/coal-python-bp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/coal-python-bp.svg)](https://anaconda.org/conda-forge/coal-python-bp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/coal-python-bp.svg)](https://anaconda.org/conda-forge/coal-python-bp) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-coal--python--mutex-green.svg)](https://anaconda.org/conda-forge/coal-python-mutex) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/coal-python-mutex.svg)](https://anaconda.org/conda-forge/coal-python-mutex) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/coal-python-mutex.svg)](https://anaconda.org/conda-forge/coal-python-mutex) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/coal-python-mutex.svg)](https://anaconda.org/conda-forge/coal-python-mutex) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-coal--python--nb-green.svg)](https://anaconda.org/conda-forge/coal-python-nb) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/coal-python-nb.svg)](https://anaconda.org/conda-forge/coal-python-nb) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/coal-python-nb.svg)](https://anaconda.org/conda-forge/coal-python-nb) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/coal-python-nb.svg)](https://anaconda.org/conda-forge/coal-python-nb) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libcoal-green.svg)](https://anaconda.org/conda-forge/libcoal) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libcoal.svg)](https://anaconda.org/conda-forge/libcoal) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libcoal.svg)](https://anaconda.org/conda-forge/libcoal) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libcoal.svg)](https://anaconda.org/conda-forge/libcoal) |
 
 Installing coal
@@ -76,7 +79,7 @@ How to use
 <summary>With conda</summary>
 
 ```
-conda install coal coal-python libcoal
+conda install coal coal-python coal-python-bp coal-python-mutex coal-python-nb libcoal
 ```
 
 </details>
@@ -85,7 +88,7 @@ conda install coal coal-python libcoal
 <summary>With mamba</summary>
 
 ```
-mamba install coal coal-python libcoal
+mamba install coal coal-python coal-python-bp coal-python-mutex coal-python-nb libcoal
 ```
 
 </details>
@@ -95,9 +98,9 @@ mamba install coal coal-python libcoal
 
 ```
 # for adding to your local project
-pixi add coal coal-python libcoal
+pixi add coal coal-python coal-python-bp coal-python-mutex coal-python-nb libcoal
 # for installing globally
-pixi global install coal coal-python libcoal
+pixi global install coal coal-python coal-python-bp coal-python-mutex coal-python-nb libcoal
 ```
 
 </details>

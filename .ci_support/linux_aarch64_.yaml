@@ -12,6 +12,9 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+coal_python_variant:
+- coal-python-bp
+- coal-python-nb
 cxx_compiler:
 - gxx
 cxx_compiler_version:
