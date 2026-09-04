@@ -80,6 +80,10 @@ outputs:
       variant:
         # make sure that Boost.Python binding is preferred over nanobind one
         down_prioritize_variant: ${{ 1 if coal_python_variant == "coal-python-nb" else 0 }}
+    tests:
+      # Assert meta-package is empty
+      - package_contents:
+          strict: true
   - package:
       name: coal-python-bp
     build:
@@ -128,6 +132,10 @@ outputs:
           then: numpy
         - ${{ pin_subpackage("libcoal", exact=true) }}
         - coal-python-mutex * coal_python_bp*
+    tests:
+      - python:
+          imports:
+            - coal
   - package:
       name: coal-python-nb
     build:
@@ -190,21 +198,9 @@ outputs:
       run_exports:
         - ${{ pin_subpackage("libcoal", exact=true) }}
     tests:
-      - python:
-          imports:
-            - coal
-      - script:
-          - cmake-package-check coal --target coal::coal
-        requirements:
-          run:
-            - cmake-package-check
-            - ${{ compiler('c') }}
-            - ${{ compiler('cxx') }}
-      - script: 
-          - pkg-config --modversion ${{ name }}
-        requirements:
-          run:
-            - pkg-config
+      # Assert meta-package is empty
+      - package_contents:
+          strict: true
   - package:
       name: coal-python
     build:
@@ -218,9 +214,9 @@ outputs:
       run:
         - ${{ coal_python_variant }}
     tests:
-      - python:
-          imports:
-            - coal
+      # Assert meta-package is empty
+      - package_contents:
+          strict: true
 
 about:
   license: BSD-3-Clause
