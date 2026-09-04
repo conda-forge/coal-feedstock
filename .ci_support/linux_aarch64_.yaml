@@ -1,5 +1,9 @@
 assimp:
 - '6'
+c_compiler:
+- gcc
+c_compiler_version:
+- '15'
 c_stdlib:
 - sysroot
 c_stdlib_version:
@@ -11,9 +15,9 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '14'
+- '15'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+- quay.io/condaforge/linux-anvil-x86_64:alma10
 eigen_abi_devel:
 - 5.0.1
 libboost_devel:
@@ -27,8 +31,14 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
+- 3.11.* *_cpython
 - 3.12.* *_cpython
+- 3.13.* *_cp313
+- 3.14.* *_cp314
 qhull:
 - '2020.2'
 target_platform:
 - linux-aarch64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
