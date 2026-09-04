@@ -1,0 +1,58 @@
+From f121534fb8af8c51bfddb02f1399c2a6a3dd2824 Mon Sep 17 00:00:00 2001
+From: Joris Vaillant <joris.vaillant@inria.fr>
+Date: Fri, 4 Sep 2026 16:19:28 +0200
+Subject: [PATCH] cmake: Don't generate stub if GENERATE_PYTHON_STUBS is OFF
+
+---
+ python-nb/CMakeLists.txt | 31 +++++++++++++++++--------------
+ 1 file changed, 17 insertions(+), 14 deletions(-)
+
+diff --git a/python-nb/CMakeLists.txt b/python-nb/CMakeLists.txt
+index 2daf1f50..2749d9db 100644
+--- a/python-nb/CMakeLists.txt
++++ b/python-nb/CMakeLists.txt
+@@ -66,16 +66,17 @@ set_target_properties(
+     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${MODULE_DIR}"
+ )
+ 
+-set(PYTHON_LIB_STUB_FILE ${MODULE_DIR}/${PYTHON_LIB_NAME_V2}.pyi)
+-
+-nanobind_add_stub(
+-  ${PYTHON_LIB_NAME_V2}_stub
+-  VERBOSE
+-  MODULE ${PROJECT_NAME}.${PYTHON_LIB_NAME_V2}
+-  OUTPUT ${PYTHON_LIB_STUB_FILE}
+-  DEPENDS ${PYTHON_LIB_NAME_V2}
+-  PYTHON_PATH ${CMAKE_CURRENT_BINARY_DIR}/${MODULE_DIR}
+-)
++if(GENERATE_PYTHON_STUBS)
++  set(PYTHON_LIB_STUB_FILE ${MODULE_DIR}/${PYTHON_LIB_NAME_V2}.pyi)
++  nanobind_add_stub(
++    ${PYTHON_LIB_NAME_V2}_stub
++    VERBOSE
++    MODULE ${PROJECT_NAME}.${PYTHON_LIB_NAME_V2}
++    OUTPUT ${PYTHON_LIB_STUB_FILE}
++    DEPENDS ${PYTHON_LIB_NAME_V2}
++    PYTHON_PATH ${CMAKE_CURRENT_BINARY_DIR}/${MODULE_DIR}
++  )
++endif()
+ add_dependencies(${PROJECT_NAME}_python ${PYTHON_LIB_NAME_V2})
+ ADD_SOURCE_GROUP(PYTHON_LIB_SOURCES)
+ 
+@@ -95,7 +96,9 @@ install(
+   LIBRARY DESTINATION ${Python_SITELIB}/${MODULE_DIR}
+ )
+ 
+-install(
+-  FILES ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON_LIB_STUB_FILE}
+-  DESTINATION ${Python_SITELIB}/${MODULE_DIR}
+-)
++if(GENERATE_PYTHON_STUBS)
++  install(
++    FILES ${CMAKE_CURRENT_BINARY_DIR}/${PYTHON_LIB_STUB_FILE}
++    DESTINATION ${Python_SITELIB}/${MODULE_DIR}
++  )
++endif()
+-- 
+2.55.0
+

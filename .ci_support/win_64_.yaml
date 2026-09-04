@@ -8,6 +8,9 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+coal_python_variant:
+- coal-python-bp
+- coal-python-nb
 cxx_compiler:
 - clang-cl
 eigen_abi_devel:
