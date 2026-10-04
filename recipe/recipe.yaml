@@ -15,7 +15,7 @@ source:
   sha256: 0a9091aa281f51b9513f11aae39758a6188bca63010524f36b3bdc566381ca4a
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - package:
@@ -65,7 +65,7 @@ outputs:
             - cmake-package-check
             - ${{ compiler('c') }}
             - ${{ compiler('cxx') }}
-      - script: 
+      - script:
           - pkg-config --modversion ${{ name }}
         requirements:
           run:
@@ -143,7 +143,7 @@ outputs:
             - cmake-package-check
             - ${{ compiler('c') }}
             - ${{ compiler('cxx') }}
-      - script: 
+      - script:
           - pkg-config --modversion ${{ name }}
         requirements:
           run:
