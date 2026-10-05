@@ -1,0 +1,31 @@
+assimp:
+- '6'
+c_compiler:
+- vs2022
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge,conda-forge/label/python_rc
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- clang-cl
+eigen_abi_devel:
+- 5.0.1
+libboost_devel:
+- '1.90'
+libboost_python_devel:
+- '1.90'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.15.* *_cp315
+qhull:
+- '2020.2'
+target_platform:
+- win-64
+zip_keys:
+- - python
+  - channel_sources
